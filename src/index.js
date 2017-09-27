@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
-import counter from './reducers'
+import configureStore from './store/configureStore'
 
-const store = createStore(counter)
+const store = configureStore()
 
 const rootEl = document.getElementById('root')
 

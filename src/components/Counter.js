@@ -2,12 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Counter extends Component {
+    componentWillMount() {
+        const { fetchCount } = this.props
+
+        fetchCount()
+    }
+
   render() {
-    const { value, handleIncrement, handleDecrement } = this.props
+    const { count, loading, handleIncrement, handleDecrement } = this.props
+
+    const output = loading ? 'Loading...' : "Clicks: " + count
 
     return (
       <p>
-        Clicked: {value} times
+        {output}
+
         <br />
         {' '}
         <button onClick={handleIncrement}>
@@ -22,10 +31,10 @@ class Counter extends Component {
   }
 }
 
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  handleIncrement: PropTypes.func.isRequired,
-  handleDecrement: PropTypes.func.isRequired
-}
+// Counter.propTypes = {
+//   count: PropTypes.number.isRequired,
+//   handleIncrement: PropTypes.func.isRequired,
+//   handleDecrement: PropTypes.func.isRequired
+// }
 
 export default Counter

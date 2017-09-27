@@ -1,15 +1,25 @@
 import { connect } from 'react-redux'
 import Counter from '../components/Counter'
-import { increment, decrement } from '../actions/counter'
+import { countFetchRequest, countIncrementRequest, countDecrementRequest } from '../actions/counter'
 
 const mapStateToProps = (state) => ({
-	value: state
+	count: state.count,
+	loading: state.loading
 })
 
-const mapDispatchToProps = (dispatch) => ({
-	handleIncrement: increment,
-	handleDecrement: decrement
-})
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchCount: () => {
+			dispatch(countFetchRequest())
+		},
+		handleIncrement: () => {
+			dispatch(countIncrementRequest())
+		},
+		handleDecrement: () => {
+			dispatch(countDecrementRequest())
+		}
+	}
+}
 
 const CounterContainer = connect(
 	mapStateToProps,
