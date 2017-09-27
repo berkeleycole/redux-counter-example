@@ -1,4 +1,5 @@
 import { call, put, takeEvery, all, fork } from 'redux-saga/effects'
+import { delay } from 'redux-saga'
 
 import {
 	COUNT_INCREMENT_REQUEST,
@@ -12,6 +13,8 @@ import * as API from '../api'
 function* increment() {
 	try {
 		const payload = yield call(API.increment)
+
+		yield delay(500)
 
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
@@ -27,6 +30,8 @@ function* decrement() {
 	try {
 		const payload = yield call(API.decrement)
 
+		yield delay(500)
+
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
 		console.log(err);
@@ -40,6 +45,8 @@ function* watchDecrement() {
 function* fetchCount() {
 	try {
 		const payload = yield call(API.get)
+
+		yield delay(500)
 
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
