@@ -14,7 +14,7 @@ function* increment() {
 	try {
 		const payload = yield call(API.increment)
 
-		yield delay(500)
+		yield delay(250)
 
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
@@ -30,7 +30,7 @@ function* decrement() {
 	try {
 		const payload = yield call(API.decrement)
 
-		yield delay(500)
+		yield delay(250)
 
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
@@ -46,7 +46,7 @@ function* fetchCount() {
 	try {
 		const payload = yield call(API.get)
 
-		yield delay(500)
+		yield delay(250)
 
 		yield put(countRecieveSuccess(payload))
 	} catch(err) {
